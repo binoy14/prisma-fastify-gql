@@ -1,13 +1,22 @@
 type Query {
-  users: [User]!
+  user(id: String!): User!
 }
 
 type Mutation {
   createUser(name: String!, email: String!): User!
+  createTweet(content: String!, userId: String!, published: Boolean): Tweet!
 }
 
 type User {
   id: String!
   name: String
   email: String!
+  tweets: [Tweet!]!
+}
+
+type Tweet {
+  id: String!
+  content: String!
+  user: User!
+  published: Boolean!
 }
